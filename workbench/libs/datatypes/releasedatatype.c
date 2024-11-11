@@ -50,17 +50,27 @@
 {
     AROS_LIBFUNC_INIT
 
+    D(bug("datatypes.library/ReleaseDataType: Entering routine.\n"));
+    
     if(!dt)
+    {
+        D(bug("datatypes.library/ReleaseDataType: was given an invalid datatype addr = %x\n", dt));
         return;
+    }
 
-   ObtainSemaphoreShared(&(GPB(DataTypesBase)->dtb_DTList)->dtl_Lock);
+    ObtainSemaphoreShared(&(GPB(DataTypesBase)->dtb_DTList)->dtl_Lock);
 
     if(((struct CompoundDataType *)dt)->OpenCount)
         ((struct CompoundDataType*)dt)->OpenCount--;
     else
-        Alert(AN_Unknown);
+    {
+        /* Alert(AN_Unknown); */
+        D(bug("datatypes.library/ReleaseDataType: OpenCount was already 0!\n"));
+    }
 
     ReleaseSemaphore(&(GPB(DataTypesBase)->dtb_DTList)->dtl_Lock);
+
+    D(bug("datatypes.library/ReleaseDataType: Done.\n"));
 
     AROS_LIBFUNC_EXIT
 } /* ReleaseDataType */
