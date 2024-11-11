@@ -220,7 +220,7 @@ static inline struct DataType *DataTypeFromANode(struct Node *aNode)
 
     D(bug("datatypes.library/ObtainDataType: Done. Returning %x\n", cdt));
     
-    return (struct DataType *)cdt;
+    return (struct DataType *)&cdt->DT;
     
     AROS_LIBFUNC_EXIT
 } /* ObtainDataTypeA */
