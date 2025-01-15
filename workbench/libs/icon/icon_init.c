@@ -1,5 +1,5 @@
 /*
-    Copyright © 1995-2017, The AROS Development Team. All rights reserved.
+    Copyright Â© 1995-2017, The AROS Development Team. All rights reserved.
     $Id$
 
 */
@@ -86,7 +86,7 @@ static int GM_UNIQUENAME(Expunge)(LIBBASETYPEPTR LIBBASE)
     if (IntuitionBase) CloseLibrary(IntuitionBase);
     if (GfxBase)       CloseLibrary(GfxBase);
     if (DOSBase)       CloseLibrary(DOSBase);
-    if (IntuitionBase) CloseLibrary(IntuitionBase);
+    if (UtilityBase)   CloseLibrary(UtilityBase);
     
     return TRUE;
 }
